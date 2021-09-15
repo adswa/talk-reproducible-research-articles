@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Computational Reproducibility in Neuroscience</title>
+  <title>Data + Code + Software = PDF</title>
 
-  <meta name="description" content="Specific issues (and solutions) of reproducibility management in neuroscience">
+  <meta name="description" content="How to write a reproducible research article">
   <meta name="author" content="Adina Wagner">
 
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -42,7 +42,8 @@
 
 <section>
 <section>
-<h2>reproducibility management in neuroscience<br  />🧠💻<br  /><small>Specific issues - and solutions</small></h2>
+    <h2><small>Data + Code + Software = PDF:</small> <br>
+        How to write a reproducible research article</h2>
 
   <div style="margin-top:1em;text-align:center">
   <table style="border: none;">
@@ -80,8 +81,8 @@
     DOI 10.5281/zenodo.4285927</a> (Scan the QR code)
     <br>
     Sources: <a
-    href="https://github.com/adswa/talk-computational-reproducibility"
-    target="_blank"> github.com/adswa/talk-computational-reproducibility</a>
+    href="https://github.com/adswa/talk-reproducible-research-articles"
+    target="_blank"> github.com/adswa/talk-reproducible-research-articles</a>
 </small>
 </a>
 </section>
@@ -90,362 +91,163 @@
 <!-- Introduction -->
 
 <section>
-<section data-transition="None">
-    <h2>Here's a recent paper that I wrote</h2>
-    <img src="pics/clonerepo2.gif" class="fragment fade-in" height="800px"
-    alt="A recording of the website https://github.com/psychoinformatics-de/paper-remodnav/
-        to demonstrate that the showcased paper lives in a completely public place">
-
-    <ul><small>
-    Links: <a href="http://handbook.datalad.org/en/latest/usecases/reproducible-paper.html" target="_blank">
-        Detailed walk-through</a>
-    +
-    <a href="https://github.com/psychoinformatics-de/paper-remodnav/" target="_blank">
-        Actual repository
-    </a></small></ul>
-</section>
-
-<section data-transition="None">
-    <h2>Here's a recent paper that I wrote</h2>
-    <img src="pics/showpdf.gif"  height="800px"
-    alt="A recording of the BioRXive preprint of the published paper, to demonstrate
-         that it is a standard research paper with figures, numerical results, and tables">
-    <ul><small>
-    Links: <a href="http://handbook.datalad.org/en/latest/usecases/reproducible-paper.html" target="_blank">
-        Detailed walk-through</a>
-    +
-    <a href="https://github.com/psychoinformatics-de/paper-remodnav/" target="_blank">
-        Actual repository
-    </a></small></ul>
-</section>
+  <section  data-background-image="https://alchetron.com/cdn/jon-claerbout-c970ff70-1e60-4ccc-92ca-583bba1b56b-resize-750.jpeg",
+  data-background-opacity="0.5">
+      <q cite="Jon Claerbout (paraphrased)">
+          An article about computational science in a scientific publication
+          is not the scholarship itself, it is merely advertising of the scholarship.
+          The actual scholarship is the complete software development environment
+          and the complete set of instructions which generated the figures.
+      </q>
+      <br><small>
+      <a href="https://library.seg.org/doi/abs/10.1190/1.1822162" target="_blank">
+          Jon Claerbout (paraphrased)</a></small>
+  </section>
 
 
-<section data-transition="None">
-    <h2>Here's a recent paper that I wrote</h2>
-    <img src="pics/kdenlive_cut/makepaperfast.GIF"  height="800px"
-    alt="A recording of running 'make' in the cloned repository to demonstrate how
-         the complete paper can be build from scratch as a dynamically generated
-         document, including freshly recomputed and embedded results">
-    <ul><small>
-    Links: <a href="http://handbook.datalad.org/en/latest/usecases/reproducible-paper.html" target="_blank">
-        Detailed walk-through</a>
-    +
-    <a href="https://github.com/psychoinformatics-de/paper-remodnav/" target="_blank">
-        Actual repository
-    </a></small></ul>
-</section>
+  <section data-transition="None">
+      <h2>Science is more than a PDF</h2>
+      <img src="pics/agoodstart.png">
+      <imgcredit>CC-BY Scriberia and <a href="https://the-turing-way.netlify.app/reproducible-research/rdm.html" target="_blank">
+                    The Turing Way</a>
+      </imgcredit>
+  </section>
 
+  <section data-transition="None">
+      <h2>Science is more than a PDF</h2>
+      <img src="pics/agoodstart2.png">
+      <imgcredit>CC-BY Scriberia and <a href="https://the-turing-way.netlify.app/reproducible-research/rdm.html" target="_blank">
+                    The Turing Way</a>
+      </imgcredit>
+  </section>
 
-<section>
-    <h2>Here's how I do a data analysis</h2>
-</section>
+  <section data-transition="None">
+      <h2>Science is more than a PDF</h2>
+      <img src="pics/agoodstart3.png">
+      <imgcredit>CC-BY Scriberia and <a href="https://the-turing-way.netlify.app/reproducible-research/rdm.html" target="_blank">
+                    The Turing Way</a>
+      </imgcredit>
+  </section>
 
-<section data-transition="None">
-    <h2>Here's how I do a data analysis</h2>
-                        <p style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:60px;margin-bottom:-60px">
-                        Enshrine my analysis in a script
-                        </p>
-                        <p class="fragment fade-in" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:180px;margin-bottom:-60px">
-                         Here: extract_lc_timeseries.py
-                        </p>
-    <p style="z-index: -1">
-<pre><code class="bash" style="max-height:none" data-line-numbers="6">$ datalad containers-run \
-  --message "Time series extraction from Locus Coeruleus"
-  --container-name nilearn \
-  --input 'mri/*_bold.nii' \
-  --output 'sub-*/LC_timeseries_run-*.csv' \
-  "python3 code/extract_lc_timeseries.py"
+    <section>
+        <h2>Research ingredients</h2>
 
--- Git commit --
-    commit 5a7565a640ff6de67e07292a26bf272f1ee4b00e
-    Author:     Adina Wagner adina.wagner@t-online.de
-    AuthorDate: Mon Nov 11 16:15:08 2019 +0100
-    Commit:     Adina Wagner adina.wagner@t-online.de
-    CommitDate: Mon Nov 11 16:15:08 2019 +0100
+        <img class='fragment fade-in' data-fragment-index="1" src="pics/flour.png" width="200px">
+        <img class='fragment fade-in' data-fragment-index="1" src="pics/water.png" width="400px">
+        <img class='fragment fade-in' data-fragment-index="1" src="pics/yeast.png" width="350px">
 
-    [DATALAD RUNCMD] Time series extraction from Locus Coeruleus
-    === Do not change lines below ===
-    {
-     "cmd": "singularity exec --bind {pwd} .datalad/environments/nilearn.simg bash..",
-     "dsid": "92ea1faa-632a-11e8-af29-a0369f7c647e",
-     "inputs": [
-      "mri/*.bold.nii.gz",
-      ".datalad/environments/nilearn.simg"
-     ],
-     "outputs": ["sub-*/LC_timeseries_run-*.csv"],
-     ...
-    }
-    ^^^ Do not change lines above ^^^
----
- sub-01/LC_timeseries_run-1.csv | 1 +
-...
-</code></pre>
-        </p>
-</section>
+        <p class="fragment fade-in" data-fragment-index="2">But what about the recipe?</p>
+        <img class='fragment fade-in' data-fragment-index="3" src="pics/bread.png" width="550px">
+    </section>
 
-<section data-transition="None">
-    <h2>Here's how I do a data analysis</h2>
-                        <p style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:130px;margin-bottom:-60px;margin-left:750px">
-                        Record code execution together <br> with
-                        input-data, output files and software
-                        environment in the
-                        execution-command
-                        </p>
-    <p style="z-index: -1">
-<pre><code class="bash" style="max-height:none" data-line-numbers="1-6">$ datalad containers-run \
-  --message "Time series extraction from Locus Coeruleus"
-  --container-name nilearn \
-  --input 'mri/*_bold.nii' \
-  --output 'sub-*/LC_timeseries_run-*.csv' \
-  "python3 code/extract_lc_timeseries.py"
-
--- Git commit --
-    commit 5a7565a640ff6de67e07292a26bf272f1ee4b00e
-    Author:     Adina Wagner adina.wagner@t-online.de
-    AuthorDate: Mon Nov 11 16:15:08 2019 +0100
-    Commit:     Adina Wagner adina.wagner@t-online.de
-    CommitDate: Mon Nov 11 16:15:08 2019 +0100
-
-    [DATALAD RUNCMD] Time series extraction from Locus Coeruleus
-    === Do not change lines below ===
-    {
-     "cmd": "singularity exec --bind {pwd} .datalad/environments/nilearn.simg bash..",
-     "dsid": "92ea1faa-632a-11e8-af29-a0369f7c647e",
-     "inputs": [
-      "mri/*.bold.nii.gz",
-      ".datalad/environments/nilearn.simg"
-     ],
-     "outputs": ["sub-*/LC_timeseries_run-*.csv"],
-     ...
-    }
-    ^^^ Do not change lines above ^^^
----
- sub-01/LC_timeseries_run-1.csv | 1 +
-...
-</code></pre>
-    </p>
-
-</section>
-
-<section data-transition="None">
-    <h2>Here's how I do a data analysis</h2>
-                        <p style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:60px;margin-bottom:-60px;margin-left:200px">
-                        Result: machine readable record about which data, code, and <br>
-                        software produced a result how, when, and why.
-                        </p>
-    <p style="z-index: -1">
-<pre><code class="bash" style="max-height:none" data-line-numbers="8-30">$ datalad containers-run \
-  --message "Time series extraction from Locus Coeruleus"
-  --container-name nilearn \
-  --input 'mri/*_bold.nii' \
-  --output 'sub-*/LC_timeseries_run-*.csv' \
-  "python3 code/extract_lc_timeseries.py"
-
--- Git commit --
-    commit 5a7565a640ff6de67e07292a26bf272f1ee4b00e
-    Author:     Adina Wagner adina.wagner@t-online.de
-    AuthorDate: Mon Nov 11 16:15:08 2019 +0100
-    Commit:     Adina Wagner adina.wagner@t-online.de
-    CommitDate: Mon Nov 11 16:15:08 2019 +0100
-
-    [DATALAD RUNCMD] Time series extraction from Locus Coeruleus
-    === Do not change lines below ===
-    {
-     "cmd": "singularity exec --bind {pwd} .datalad/environments/nilearn.simg bash..",
-     "dsid": "92ea1faa-632a-11e8-af29-a0369f7c647e",
-     "inputs": [
-      "mri/*.bold.nii.gz",
-      ".datalad/environments/nilearn.simg"
-     ],
-     "outputs": ["sub-*/LC_timeseries_run-*.csv"],
-     ...
-    }
-    ^^^ Do not change lines above ^^^
----
- sub-01/LC_timeseries_run-1.csv | 1 +
-...
-</code></pre>
-    </p>
-</section>
-
-<section data-transition="None">
-    <h2>Here's how I re-do a data analysis</h2>
-                        <p style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:60px;margin-bottom:-60px;margin-left:350px">
-                        Use the unique identifier of the execution record
-                        </p>
-    <p style="z-index: -1">
-    <pre><code class="bash" style="max-height:none" data-line-numbers="1">$ datalad rerun 5a7565a640ff6de67
-[INFO   ] run commit 5a7565a640ff6de67; (Time series extraction from Locus Coeruleus)
-[INFO   ] Making sure inputs are available (this may take some time)
-get(ok): mri/sub-01_bold.nii (file)
-get(ok): mri/sub-02_bold.nii (file)
-        [...]
-[INFO   ] == Command start (output follows) =====
-[INFO   ] == Command exit (modification check follows) =====
-add(ok): sub-01/LC_timeseries_run-*.csv(file)
-add(ok): sub-02/LC_timeseries_run-*.csv (file)
-        [...]
-action summary:
-  add (ok: 30)
-  get (ok: 30)
-  save (ok: 2)
-  unlock (ok: 30)
-    </code></pre>
-    </p>
-</section>
-
-<section data-transition="None">
-    <h2>Here's how I do a data analysis</h2>
-                    <p style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:400px;margin-bottom:-60px;margin-left:350px">
-                        ... to have a machine recompute and verify what has been done
-                        </p>
-    <p style="z-index: -1">
-    <pre><code class="bash" style="max-height:none" data-line-numbers="2-16">$ datalad rerun 5a7565a640ff6de67
-[INFO   ] run commit 5a7565a640ff6de67; (Time series extraction from Locus Coeruleus)
-[INFO   ] Making sure inputs are available (this may take some time)
-get(ok): mri/sub-01_bold.nii (file)
-get(ok): mri/sub-02_bold.nii (file)
-        [...]
-[INFO   ] == Command start (output follows) =====
-[INFO   ] == Command exit (modification check follows) =====
-add(ok): sub-01/LC_timeseries_run-*.csv(file)
-add(ok): sub-02/LC_timeseries_run-*.csv (file)
-        [...]
-action summary:
-  add (ok: 30)
-  get (ok: 30)
-  save (ok: 2)
-  unlock (ok: 30)
-    </code></pre>
-</section>
-
-
-</section>
-
-<!-- Specific issues in Neuroscience -->
-
-<section>
-<section>
-    <h2>Why do I work in that way?</h2>
-    <ul>
-        <li class="fragment fade-in">
-            Because it makes my life easier
-        </li>
-        <li class="fragment fade-in">
-            Because it allows me to enable my future, forgetful self and
-            others to understand, redo, and verify what I have done,
-            and also build up on it
-        </li>
-        <li class="fragment fade-in">
-            Because it makes my research better, more accessible, and adaptable,
-            and makes me gain confidence in my results
-        </li>
-        <li class="fragment fade-in">
-            Because it makes collaborating with others and my past self easier
-        </li>
-    </ul>
-
-    <br>
-    <p class="fragment fade-in">
-        Neuroscience contains some specific and
-        complex obstacles to computational reproducibility.
-    </p>
-</section>
-
-
-<section>
-    <h2>Specific issues: Data</h2>
-    <ul style="font-size:35px">
-        <li>
-            Neuroscientists acquire interesting data, but it has its peculiarities:
-        </li>
-        <ul style="font-size:30px">
-            <li class="fragment fade-in" data-fragment-index="1">
-                Depending on acquisition hardware and analysis software, some
-                data are in proprietary formats (e.g., Neuromag, brain voyager,
-                brain vision)
-            </li>
-            <li class="fragment fade-in" data-fragment-index="1">
-                Depending on field, data can be sizeable (e.g., (f)MRI, CT,
-                EEG, PET, MEG)
-            </li>
-            <li class="fragment fade-in" data-fragment-index="1">
-                Heterogenous data from complex acquisitions with multiple data
-                channels and modalities
-            </li>
-            <li class="fragment fade-in" data-fragment-index="1">
-                Datasets are getting bigger and bigger (<a href="https://sci-hub.se/10.1016/j.neuroimage.2017.04.061" target="_blank">
-                Bzdok & Yeo, 2017</a>), e.g. multi-modal imaging, behavioral + genetics
-                data in HCP (<a href="http://humanconnectome.org/" target="_blank">humanconnectome.org</a>)
-                or UKBiobank (<a href="https://www.ukbiobank.ac.uk" target="_blank">ukbiobank.ac.uk/</a>)
-            </li>
-            <li class="fragment fade-in" data-fragment-index="1">
-                Some data fall under General Data Protection Regulation (GDPR)
-            </li>
-        </ul>
-    </ul>
-         <p class="fragment fade-in" data-fragment-index="2">
-           This makes data harder to access, structure, and share</p>
-</section>
-
-<section>
-    <h2>Specific issues: Complex analyses</h2>
-            <img class="fragment fade-in-then-semi-out"
-                 data-fragment-index="1" height="200"
-                 src="pics/masterplan.png">
-    <ul style="font-size:35px">
-        <li class="fragment fade-in" data-fragment-index="2">
-            Much of neuroscientific research is computationally intensive, with
-            complex workflows from raw data to result, and plenty of researchers
-            degrees of freedom
-        </li>
-    </ul>
-    <img class="fragment fade-in" data-fragment-index="2" src="pics/dataflow.jpg">
-    <imgcredit>
-        <a href="https://www.frontiersin.org/articles/10.3389/fninf.2012.00009/full" target="_blank">
-            Poline et al., 2011</a></imgcredit>
-</section>
-
-<section>
-    <h2>Specific issues: Complex analyses</h2>
-    <ul>
-        The analytic flexibility leads to sizable variations in conclusion.
-        <table style="font-size:35px">
-            <tr class="fragment fade-in-then-semi-out">
+    <section data-transition="None">
+        <h2>Open Sharing may not be enough</h2>
+        <dl class="fragment fade-in-then-semi-out" style="font-size:30px">
+            <dt><a href="https://royalsocietypublishing.org/doi/10.1098/rsos.180448" target="_blank">
+                Hardwicke et al., 2018</a>: </dt>
+            <ul>
+                <li>Open data of 38% of N=174 studies were not "in principle reusable"</li>
+                <li>24 out of 35 studies with reusable data: irreproducible main results without assistance of the original authors, </li>
+                <li>13 out of 24: not exactly reproducible even with assistance </li>
+                </ul>
+            <dt><a href="https://journals.sagepub.com/doi/full/10.1177/2515245920918872" target="_blank">
+                Obels et al., 2020</a>: </dt>
+            <ul>
+                <li>N=62 Registered Reports</li>
+                <li>36 articles shared both data and code to reproduce results</li>
+                <li>Out of those, main findings of 15 articles could not be reproduced</li>
+            </ul>
+        </dl>
+        <br><br>
+        <table style="font-size:30px" class="fragment fade-in">
+            <tr style="vertical-align:top">
                 <td>
-                <dl>
-                    <dt>NARPS Study,<br>
-                    <small><a href="https://sci-hub.se/10.1038/s41586-020-2314-9" target="_blank">
-                    Botvinik-Nezer et al., 2020</a></small></dt>
+                Data Management<br>
+                <dl style="font-size: 25px;vertical-align:top">
+                    <!-- Data Management -->
+                    <li>multiple versions of code/data</li>
+                    <li>suboptimal data curation</li>
+                    <li>unclear execution order/entry points</li>
+                    <li>non-portable code</li>
                 </dl>
                 </td>
-            <td>
-                70 independent research groups, <br> investigating 9 hypothesis,
-                on the <br>same data: Consistent conclusions  <br>for four
-                hypothesis
+
+            <td style="vertical-align:top">
+                Technical problems <br>
+                <dl style="font-size: 25px">
+                    <!-- -->
+                    <li>wrong software <br>
+                        environment</li>
+                    <li>proprietary software</li>
+                    <li>link rot/accessibility issues</li>
+                </dl>
+            </td>
+            <td style="vertical-align:top">
+                Human errors <br>
+                <dl style="font-size: 25px">
+                <!-- Human errors in the manuscript -->
+                    <li>reporting (copy-paste) errors</li>
+                    <li>ambiguous analysis specification</li>
+
+                </dl>
             </td>
             </tr>
-            <tr class="fragment fade-in">
-                <td>
-                    The variety of methodological <br>
-                    & analytical choices is not the <br>
-                    enemy to computational  <br>reproducibility,
-                    <strong>the challenge <br>lies in encoding
-                    those degrees <br>of freedom in a
-                    standardized, <br>ideally machine-readable
-                    way <br></strong>
-                    <small><a href="https://sci-hub.se/10.1111/nyas.13325" target="_blank">
-                        Gilmore et al., 2017</a> </small>
-                </td>
-                <td>
-                <img src="pics/sidney_harris_miracle.jpg" style="box-shadow: 10px 10px 8px #888888;height=500px" height="500"><br>
-                </td>
-            </tr>
-    </table>
-</section>
+        </table>
+    </section>
 
+    <section>
+        <h2>Be kind to your future self, work reproducibly</h2>
+        <img class="fragment fade-in" src="pics/your-closest-collaborator.png">
+        <!--<img class="fragment fade-in" height="400px" src="pics/ten-years-challenge.png">-->
+    </section>
+</section>
+<!--First: show you what this looks like, second, explain how -->
+
+  <section>
+      <h2>A reproducible paper in the wild</h2>
+      <video src="/home/adina/Videos/remodnav/remodnav.webm" controls></video>
+          <small>You can find this recording on YouTube:
+              <a href="https://www.youtube.com/watch?v=nhLqmF58SLQ" target="_blank">
+                  https://www.youtube.com/watch?v=nhLqmF58SLQ</a></small>
+  </section>
+
+    <section>
+        <h2>Building blocks of the publication</h2>
+        <small>
+            <strong>Disclaimer: This is not the only way to write a reproducible paper!</strong>
+      <ul style="">
+          <li>Original reproducible paper:
+          <a href=https://github.com/psychoinformatics-de/paper-remodnav
+   target="_blank">https://github.com/psychoinformatics-de/paper-remodnav</a></li>
+          <li>Resulting publication:
+              <a href="https://doi.org/10.3758/s13428-020-01428-x" target="_blank">
+                  https://doi.org/10.3758/s13428-020-01428-x
+              </a>
+          </li>
+          <li>Step-by-Step instructions:
+              <a href="http://handbook.datalad.org/en/latest/usecases/reproducible-paper.html" target="_blank">
+                  handbook.datalad.org/usecases/reproducible-paper.html
+              </a> </li>
+          <li>Tutorial:
+              <a href="https://github.com/datalad-handbook/repro-paper-sketch" target="_blank">
+                github.com/datalad-handbook/repro-paper-sketch
+          </a> </li>
+      </ul>
+        </small><br><br>
+
+        Specific workflow and software choices:
+        <ul style="font-size: 30px">
+          <li>Version control and data transport: Git & DataLad </li>
+          <li>Workflow management: Make</li>
+          <li>Software management: Virtual environments</li>
+          <li>Dynamic document generation: LaTeX</li>
+      </ul>
+    </section>
+
+
+<section>
 <section data-transition="None">
-    <h2>Specific issues: Complex analysis</h2>
+    <h2>Why: Version control and data transport?</h2>
     <dl style="font-size:35px">
         <dt>The building blocks of a scientific result are rarely static</dt>
             <table>
@@ -464,7 +266,7 @@ action summary:
 </section>
 
 <section data-transition="None">
-    <h2>Specific issues: Complex analysis</h2>
+    <h2>Why: Version control and data transport?</h2>
     <dl style="font-size:35px">
         <dt>The building blocks of a scientific result are rarely static</dt>
             <table>
@@ -483,390 +285,19 @@ action summary:
     </dl>
 </section>
 
-<section data-transition="None">
-    <h2>Specific issues: Complex analysis</h2>
-    <dl style="font-size:35px">
-        <dt>The building blocks of a scientific result are rarely static</dt>
-        <br>
-        <br>
-        <br>
-            <table>
-                <tr>
-                    <td>Data changes (for real) <br>
-                        <small>(errors are fixed, data is extended,<br>
-                            naming standards change, ...)</small></td>
-                    <td>
-                    <b>Example</b>: <br>I found an error in one external dataset <br>
-                        for a paper, after all results have been <br>
-                        computed</td>
-                </tr>
-            </table>
-        <img src="pics/datahistory.png" >
-    </dl>
-</section>
 
-<section data-transition="None">
-    <h2>Complex analysis ➝ chaotic projects </h2>
-    "Shit, which version of which script produced these outputs from which version
-    of what data?"<br>
-    <img src="pics/manuallabor.png">
-    <img src="pics/findfiles.png" height="400">
-    <img src="pics/projectstack.png" height="350">
-    <imgcredit>CC-BY Scriberia and <a href="https://the-turing-way.netlify.app/reproducible-research/rdm.html" target="_blank">
-        The Turing Way</a>
-    </imgcredit>
-</section>
-
-
-<section data-transition="None">
-    <h3>The pipeline needs to become transparent</h3>
-    <table>
-        <tr>
-            <td>
-            <img src="pics/Provenance_alpha.png">
-            <imgcredit><a href="https://the-turing-way.netlify.app/reproducible-research/vcs/vcs-data.html" target="_blank">
-                        CC-BY Scriberia & The Turing Way</a>
-            </imgcredit>
-            </td>
-            <td style="font-size:35px">
-                <i>Digital Provenance</i> = A complete description of how a digital file
-              came to be <a href="https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/" target="_blank">
-                    (FAI<b>R</b> principles)
-                </a> </i>
-            </td>
-        </tr>
-    </table>
-</section>
-
-<section data-transition="None">
-    <h3>The pipeline needs to become automated</h3>
-    <table>
-        <tr>
-            <td>
-            <img src="pics/MachineReadable.png">
-            <imgcredit><a href="https://the-turing-way.netlify.app/reproducible-research/vcs/vcs-data.html" target="_blank">
-                        CC-BY Scriberia & The Turing Way</a>
-            </imgcredit>
-            </td>
-            <td>
-                <ul style="font-size:35px">
-                    <li>
-                        enshrine analysis <br>
-                        & workflows in <br>
-                        code, not clicks
-                    </li>
-                    <li>
-                        Make workflow <br>
-                        execution easy, <br>
-                        e.g., with master <br>
-                        scripts to bundle<br>
-                        up individual steps <br>
-                    </li>
-                    <small>Perkel, 2020,
-                        <a href="https://www.nature.com/articles/d41586-020-02462-7" target="_blank">
-                            checklist for <br>
-                            computational reproducibility
-                    </a></small>
-                </ul>
-
-            </td>
-        </tr>
-    </table>
-</section>
-
-<section>
-    <h2>Specific issues: Complex tools</h2>
-    <iframe src="https://giphy.com/embed/yhcqymRLlv7K8" width="480" height="363" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/oc-the-rachel-bilson-yhcqymRLlv7K8"></a></p>
-</section>
-
-<section data-transition="None">
-    <h2>Specific issues: Complex tools</h2>
-
-    <ul style="font-size:35px">
-        <li class="fragment fade-in-then-semi-out" data-fragment-index="1">
-            Software is a part of the digital provenance of your work:
-            Some analysis will only work in the desired way (or at all)
-            in specific versions of a software
-        </li>
-        <li class="fragment fade-in" data-fragment-index="2">
-            But it goes beyond "one software": Modern data analysis software
-            has an incredibly complex dependency stack
-        </li>
-        <li class="fragment fade-in" data-fragment-index="2">
-            Example Scikit-learn
-            <small>
-            Direct dependencies: 38 packages, 153 dependency relations.
-            Recursive dependencies: 485 packages, 10715 dependency relations</small>
-        </li>
-    </ul>
-    <div class="fragment fade-in">
-    <img src="pics/dependencies_sklearn.png">
-    <small><a href="http://computation-in-science.khinsen.net/software-dependencies.html" target="_blank">
-                "Computation in science", Hinsen (2020)
-            </a></small></div>
-</section>
-
-<section data-transition="None">
-        <h2>Specific issues: Complex tools</h2>
-    <dl>
-        <dt>R base core</dt> (direct dependencies only)
-    <img src="pics/deps_r-base-core.jpeg">
-</section>
-
-
-<section  data-transition="None">
-    <h2>Specific issues: Complex tools</h2>
-    <dl>
-        <dt>JASP</dt> (direct dependencies only)
-            <img src="pics/deps_jasp.jpeg" height="600">
-    </dl>
-
-</section>
-
-<section data-transition="None">
-    <h2>Everything matters</h2>
-    <img src="pics/glatard01.png">
-</section>
-
-<section data-transition="None">
-    <h2>Everything matters</h2>
-    <img src="pics/glatard02.png">
-</section>
-
-<section data-transition="None">
-    <h2>"Works on my machine"</h2>
-    <img src="pics/WOMM.jpg">
-    <imgcredit><a href="https://derickbailey.com/2017/02/08/digging-into-the-works-on-my-machine-problem/" target="_blank">
-        derickbailey.com
-    </a> </imgcredit>
-</section>
-
-
-<section data-transition="None">
-    <h2>"This used to work on my machine..."</h2>
-    <img src="pics/WOMM2.jpg">
-        <imgcredit>Based on <a href="https://derickbailey.com/2017/02/08/digging-into-the-works-on-my-machine-problem/" target="_blank">
-        derickbailey.com
-    </a> </imgcredit>
-</section>
-
-<section data-transition="None">
-    <h2>"This used to work on my machine..."</h2>
-    <img src="pics/WOMM2.jpg">
-        <imgcredit>Based on <a href="https://derickbailey.com/2017/02/08/digging-into-the-works-on-my-machine-problem/" target="_blank">
-        derickbailey.com
-    </a> </imgcredit><br>
-    And if the analysis does not fail, but produces different results,<br>
-    <b>how do you know which is the correct one</b>?
-</section>
-
-<section>
-    <h2>Its a lot to take</h2>
-    <img src="pics/overwhelmed.png" height="800">
-</section>
-
-
-<section data-transition="None">
-    <h2>Common issues in (Neuro?)science</h2>
-    <img src="pics/fragile.png" height="800">
-    <imgcredit>Based on <a href="https://xkcd.com/2347/" target="_blank">
-        xkcd.com/2347/</a> (CC-BY)</imgcredit>
-</section>
-
-<section>
-    <h2>Towards computationally reproducible science</h2>
-    <div class="fragment fade-in">Which solutions exist in neuroscience?</div>
-    <br>
-    <ul class="fragment fade-in" style="font-size:30px">
-        <li>Open source software</li>
-        <li>Specific non-neuroscience solutions: <br>
-            Version control,
-            Software management & containers, <br>
-            research data management</li>
-        <li>Training and supportive environments</li>
-    </ul>
-</section>
-
-</section>
-
-
-<!-- Solutions in Neuroscience -->
-
-<section>
-
-<section>
-    <h2>There is no "one fits all" solution</h2>
-    <img class="fragment fade-in" data-fragment-index="1" src="pics/makeitwork.gif"></p>
-    <p class="fragment fade-in" data-fragment-index="1">
-        There are many solutions to individual<br>
-        problems, and they need to be combined</p>
-</section>
-
-<section>
-    <h3>Large & growing ecosystem of Open Source software & data formats</h3>
-    <table>
-      <tr style="vertical-align:middle">
-        <td style="vertical-align:middle">
-          <img style="height:50px;margin-right:50px" data-src="pics/neurodebian.png"/>
-          <img style="height:50px;margin-right:50px" data-src="pics/jupyter_logo.png"/>
-          <img style="height:50px;margin-right:50px" data-src="pics/neologo.png" />
-          <img style=height:50px;margin-left:50px" data-src="pics/mindboggle_logo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/psychopy_logo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/fsl_logo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/pydra_logo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/R_logo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/nwblogo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/rstudio-logo.png" />
-          <img style="height:50px;margin:20px" data-src="pics/afni_logo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/pymvpa_logo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/mne_logo.svg" />
-          <img style="height:50px;margin-left:50px" data-src="pics/bids.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/FSlogo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/odMLLogo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/pysurfer_logo.png" />
-          <img style="height:50px;margin-left:50px" data-src="pics/nix_logo.png" />
-          <img style="height:50px;margin:20px" data-src="pics/nilearn-logo.png" />
-          <img style="height:50px;margin:20px" data-src="pics/elephant_logo.png" />
-          <img style="height:50px;margin:20px" data-src="pics/ants_logo.png" />
-          <img style="height:50px;margin:20px" data-src="pics/brainiak_logo.svg" />
-          <img style="height:50px;margin:20px" data-src="pics/spm.svg" />
-          <img style="height:50px;margin:20px" data-src="pics/cpac_logo.png" />
-          <img style="height:50px;margin:20px" data-src="pics/fieldtrip_logo.png" />
-      <div style="margin:-100px;margin-left:600px;font-size:35px">... and many more!</div>
-      </td>
-      </tr>
-  </table>
-    <br>
-    <br>
-    <br>
-    <br>
-    <ul>
-        <li>Remove accessibility barriers</li>
-        <li>Transparent digital provenance</li>
-    </ul>
-</section>
-
-<section data-transition="None">
-    <h2>A few special tools and concepts</h2>
-    <table>
-        <tr>
-            <td>
-                <img class="fragment fade-in" data-fragment-index="1" src="pics/ProjectHistory.png" width="600">
-                <imgcredit><a href="https://the-turing-way.netlify.app/reproducible-research/vcs/vcs-data.html" target="_blank">
-                    CC-BY Scriberia & The Turing Way</a>
-                </imgcredit>
-            </td>
-            <td>
-                <ul style="font-size:35px">
-                            <dt class="fragment fade-in"  data-fragment-index="1" >Version control</dt>
-                  <li class="fragment fade-in" data-fragment-index="2">keep things organized</li>
-                  <li class="fragment fade-in" data-fragment-index="2">keep track of changes</li>
-                  <li class="fragment fade-in" data-fragment-index="2">revert changes or go <br>
-                      back to previous states</li>
-                  <li class="fragment fade-in" data-fragment-index="3">collect and share digital provenance</li>
-                    <li class="fragment fade-in" data-fragment-index="3">industry standard: Git</li>
-                </ul>
-            </td>
-        </tr>
-    </table>
-    <img class="fragment fade-in" data-fragment-index="3" src="pics/datahistory.png">
-</section>
-
-<section data-transition="None">
-    <h2>A few special tools and concepts</h2>
-    <table>
-        <tr>
-            <td>
-                <img src="pics/debianmed.png" height="100">
-                <img src="pics/neurodebian.png" height="100"><br>
-                <img src="pics/rcran.png" height="100">
-                <img src="pics/pipylogo.svg" height="100">
-                <img src="pics/dockerexplain2.png" height="300">
-                <imgcredit><a href="https://www.docker.com/resources/what-container" target="_blank">
-                    Docker.com</a>
-                </imgcredit>
-            </td>
-            <td>
-                <ul style="font-size:35px">
-                            <dt>
-                                Software repositories,<br> managers,
-                                and software <br>containers</dt>
-                  <li class="fragment fade-in">
-                      Software repositories<br>
-                      (e.g., Neurodebian,<br>
-                      or Debian Med) package <br>
-                      complex software, +<br>
-                      convenient installation &<br>
-                      dependency management
-                  </li>
-                  <li class="fragment fade-in">
-                      Software containers<br>
-                      (e.g., Docker, Singularity) allow to
-                      encapsulate a complete <br>
-                      software environment
-                  </li>
-                </ul>
-            </td>
-        </tr>
-    </table>
-</section>
-
-<section data-transition="None">
-    <h2>Research data management</h2>
-    <ul style="font-size:30px">
-        <li class="fragment fade-in" data-fragment-index="1">
-            Large, complex data sets and analysis require good (FAIR) research data
-            management from the very start, and that's a basis for computational reproducibility.<br></li>
-        <table>
-            <tr>
-                <td>
-                     <img class="fragment fade-in"  data-fragment-index="1" src="pics/JSC.png" height="350">
-                     <imgcredit>JISC; CC-BY-SA-ND</imgcredit>
-                </td>
-                <td>
-                    <p class="fragment fade-in">
-                        Just like Research Data <br> Management
-                        can't be an <br> afterthought,
-                        reproducibility<br> management shouldn't <br>
-                        be an afterthought <br>
-                        ("Reproducible by Design" <br>
-            <a href="https://doi.org/10.3389/fninf.2019.00001" target="_blank">
-                Kennedy et al., 2019</a>)</p>
-                </td>
-            </tr>
-        </table>
-        </li>
-        <li class="fragment fade-in">National (e.g., <a href="https://www.nfdi-neuro.de/" target="_blank">NFDINeuro</a>)
-            & international initiatives (e.g., <a href="https://www.incf.org/" target="_blank">
-            INCF</a>, <a href="https://www.repronim.org/" target="_blank">ReproNim</a>) improve RDM, reproducibility management, & data sharing with
-            tools, infrastructure, teaching
-        </li>
-        <li class="fragment fade-in">Plenty of infrastructure for sharing code,
-            data, and software:
-            <a href="https://openneuro.org/" target="_blank">OpenNeuro</a>,
-            <a href="https://zenodo.org/" target="_blank">zenodo.org</a>,
-            <a href="https://www.softwareheritage.org/mission/science/" target="_blank">Software heritage</a>,
-            <a href="https://git-scm.com/book/en/v2/Git-on-the-Server-GitLab" target="_blank">GitHub/GitLab/Gin</a>,
-            <a href="https://osf.io/" target="_blank">The Open Science Framework</a>, ..., and
-            work enabling safe, open data sharing of private data (e.g.,
-            <a href="https://open-brain-consent.readthedocs.io/en/stable/index.html" target="_blank">
-                Open Brain Consent</a>)
-        </li>
-    </ul>
-</section>
-
-
-<section data-transition="None">
-    <h2>DataLad <sub><small>(Hanke, Halchenko et al.)</small></sub></h2>
+    <section data-transition="None">
+    <h2>How it works: Version control and data transport</h2>
 
         <ul style="font-size:35px">
         <li class="fragment fade-in-then-semi-out" data-fragment-index="1">
-            Domain-agnostic data management & data publication tool,
+            DataLad<a href="https://joss.theoj.org/papers/10.21105/joss.03262" target="_blank">
+        (Halchenko et al)</a>: Open source, domain-agnostic data management & data publication tool,
             build on top of <a href="https://git-scm.com/" target="_blank">Git</a>
             and <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a> (Joey Hess)
         </li>
         <li class="fragment fade-in" data-fragment-index="2">
-            <b>Main features:</b>
+            <b>Main features used in this publication:</b>
         </li>
             <ul >
                 <li class="fragment fade-in" data-fragment-index="2">
@@ -878,25 +309,32 @@ action summary:
                     on data (analysis) using existing infrastructure without
                     a central service
                 </li>
-                <li class="fragment fade-in" data-fragment-index="4">
-                    Machine-readable, re-executable provenance
-                </li>
         </ul>
     </ul>
-    <img class="fragment fade-in" data-fragment-index="1" src="pics/decentral_RDM.png">
+        <table>
+            <tr>
+                <td>
+                     <img class="fragment fade-in" data-fragment-index="2" src="pics/git-repo.png">
+                </td>
+                <td>
+                    <img class="fragment fade-in" data-fragment-index="2" src="pics/local_wf.svg" height="400">
+                </td>
+            </tr>
+        </table>
 </section>
 
-<section data-transition="None">
-    <h2>DataLad <sub><small>(Hanke, Halchenko et al.)</small></sub></h2>
+    <section data-transition="None">
+    <h2>How it works: Version control and data transport</h2>
 
         <ul style="font-size:35px">
         <li>
-            Domain-agnostic data management & data publication tool,
+            DataLad<a href="https://joss.theoj.org/papers/10.21105/joss.03262" target="_blank">
+        (Halchenko et al)</a>: Open source, domain-agnostic data management & data publication tool,
             build on top of <a href="https://git-scm.com/" target="_blank">Git</a>
             and <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a> (Joey Hess)
         </li>
         <li>
-            <b>Main features:</b>
+            <b>Main features used in this publication:</b>
         </li>
             <ul >
                 <li>
@@ -908,194 +346,628 @@ action summary:
                     on data (analysis) using existing infrastructure without
                     a central service
                 </li>
+        </ul>
+    </ul>
+    <img class="fragment fade-in" data-fragment-index="1" src="pics/decentral_RDM.png">
+</section>
+
+
+    <section data-transition="None">
+    <h2>How it works: Version control and data transport</h2>
+
+        <ul style="font-size:35px">
+        <li>
+            DataLad<a href="https://joss.theoj.org/papers/10.21105/joss.03262" target="_blank">
+        (Halchenko et al)</a>: Open source, domain-agnostic data management & data publication tool,
+            build on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            and <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a> (Joey Hess)
+        </li>
+        <li>
+            <b>Main features used in this publication:</b>
+        </li>
+            <ul >
                 <li>
-                    Machine-readable, re-executable provenance
+                    version-controlling and linking arbitrarily large digital objects
+                    (data, software, code, results),
+                </li>
+                <li>
+                    transport mechanisms for sharing, obtaining & collaborating
+                    on data (analysis) using existing infrastructure without
+                    a central service
+                </li>
+        </ul>
+    </ul>
+<pre><code class="bash" style="max-height:none" data-line-numbers="1-5">(remodnav) adina@muninn in ~/repos/papers/paper-remodnav on git:master
+# How large is the repository after cloning?
+$ du -sh    # show disk usage in human readable sizes
+16M
+</code></pre>
+        <p style="font-size:30px" class="fragment fade-in" data-fragment-index=1">Let's take a look into how the script retrieves data:</p>
+           <p class="fragment fade-in"  data-fragment-index="2" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:50px;margin-bottom:-30px;margin-left:700px">
+                        Import datalad API
+                        </p>
+                        <p class="fragment fade-in" data-fragment-index="3" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:170px;margin-bottom:-60px;margin-left:500px">
+                         Get individual files
+                        </p>
+    <p style="z-index: -1">
+<pre class="fragment fade-in" data-fragment-index="1" ><code class="python" style="max-height:none" data-line-numbers="3, 7">vim code/mk_figuresnstats.py
+
+from datalad.api import get as datalad_get
+[...]
+infiles = [op.join('data', 'raw_eyegaze', 'sub-32', 'beh', 'sub-32_task-movie_run-5_recording-eyegaze_physio.tsv.gz'), [...]]
+for f in infiles:
+    datalad get(f)
+    data = np.recfromcsv(f)
+</code></pre>
+
+</section>
+
+
+<section data-transition="None">
+    <h2>How it works: Version control and data transport</h2>
+
+        <ul style="font-size:35px">
+        <li>
+            DataLad<a href="https://joss.theoj.org/papers/10.21105/joss.03262" target="_blank">
+        (Halchenko et al)</a>: Open source, domain-agnostic data management & data publication tool,
+            build on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            and <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a> (Joey Hess)
+        </li>
+        <li>
+            <b>Main features used in this publication:</b>
+        </li>
+            <ul >
+                <li>
+                    version-controlling and linking arbitrarily large digital objects
+                    (data, software, code, results),
+                </li>
+                <li>
+                    transport mechanisms for sharing, obtaining & collaborating
+                    on data (analysis) using existing infrastructure without
+                    a central service
                 </li>
         </ul>
     </ul>
     <img src="pics/linkage_subds.png">
-
 </section>
 
+<section data-transition="None">
+    <h2>How it works: Version control and data transport</h2>
+
+        <ul style="font-size:35px">
+        <li>
+            DataLad<a href="https://joss.theoj.org/papers/10.21105/joss.03262" target="_blank">
+        (Halchenko et al)</a>: Open source, domain-agnostic data management & data publication tool,
+            build on top of <a href="https://git-scm.com/" target="_blank">Git</a>
+            and <a href="https://git-annex.branchable.com/" target="_blank">Git-annex</a> (Joey Hess)
+        </li>
+        <li>
+            <b>Main features used in this publication:</b>
+        </li>
+            <ul >
+                <li>
+                    version-controlling and linking arbitrarily large digital objects
+                    (data, software, code, results),
+                </li>
+                <li>
+                    transport mechanisms for sharing, obtaining & collaborating
+                    on data (analysis) using existing infrastructure without
+                    a central service
+                </li>
+        </ul>
+    </ul>
+    <p class="fragment fade-in" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:100px;margin-bottom:-30px">
+                        Raw data
+                        </p>
+                        <p class="fragment fade-in" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:200px;margin-bottom:-60px">
+                         Software package
+                        </p>
+    <p style="z-index: -1">
+<pre><code class="bash" style="max-height:none" data-line-numbers="1-2">$ (remodnav) adina@muninn in ~/repos/papers/paper-remodnav on git:master
+❱ datalad subdatasets --recursive
+subdataset(ok): data/raw_eyegaze (dataset)
+subdataset(ok): data/raw_eyegaze/src/lab-eyetracking (dataset)
+subdataset(ok): data/studyforrest-data-eyemovementlabels (dataset)
+subdataset(ok): data/studyforrest-data-eyemovementlabels/code/remodnav (dataset)
+subdataset(ok): data/studyforrest-data-eyemovementlabels/inputs/raw_eyegaze (dataset)
+subdataset(ok): remodnav (dataset)
+subdataset(ok): remodnav/remodnav/tests/data/anderson_etal (dataset)
+subdataset(ok): remodnav/remodnav/tests/data/studyforrest (dataset)
+action summary:
+  subdataset (ok: 8)
+</code></pre>
+</section>
 
 <section>
-    <h2>Empowerment through training</h2>
-    <ul style="font-size:35px">
-        <p class="fragment fade-in-then-semi-out">
-            The tools, methods, and services for computationally reproducible
-            science exist.
-        </p>
-        <p class="fragment fade-in">
-            But only having those tools is not enough.
-        </p>
-        <br>
-        <p class="fragment fade-in">
-            We need to empower users to use them...
-        </p>
-        <p class="fragment fade-in">
-            ... and users need to turn to these tools not because they must,
-            but because it makes their life easier and their research better.
-        </p>
-    </ul>
+    <h2>How it works: Version control and data transport</h2>
+    <img src="pics/researchlog.png">
+</section>
 </section>
 
-
+<section>
 <section data-transition="None">
-    <h2>Inclusive, collaborative, educational spaces</h2>
-        <p style="font-size:30px">Even the greatest tool will die if no one knows about it or
-        can use it, and no one's life is easier if you have to learn everything
-            by yourself from scratch, with no support.</p>
-    <br>
-    <img style="box-shadow: 10px 10px 8px #888888;margin-top:-20px;margin-bottom:-10px" src="pics/ohbmhack.png" height="220">
-    <img style="box-shadow: 10px 10px 8px #888888;margin-top:-20px;margin-bottom:-10px" src="pics/neurohackademy.jpg"  height="220">
-    <img src="pics/contributors.png" style="box-shadow: 10px 10px 8px #888888;margin-top:-20px;margin-bottom:-10px" height="460">
-    <img style="box-shadow: 10px 10px 8px #888888;margin-top:-20px;margin-bottom:-10px" src="pics/bookdash.jpg"  height="260">
-    <small>Top left: <a href="https://ohbm.github.io/hackathon2020/" target="_blank">OHBM Brainhack</a>,
-        Top right: <a href="https://neurohackademy.org/" target="_blank">Neurohackademy</a>,
-     <br>Bottom left: <a href="https://github.com/datalad-handbook/book#contributors-" target="_blank">
-            DataLad Handbook contributor count</a>,
-        Bottom right: <a href="https://the-turing-way.netlify.app/welcome" target="_blank">Turing Way bookdash</a></small>
+    <h2>Why: Workflow management?</h2>
+    "Shit, which parametrization of which script produced these outputs from which subset
+    of what data in which order?"<br>
+    <img src="pics/manuallabor.png">
+    <img src="pics/findfiles.png" height="400">
+    <img src="pics/projectstack.png" height="350">
+    <imgcredit>CC-BY Scriberia and <a href="https://the-turing-way.netlify.app/reproducible-research/rdm.html" target="_blank">
+        The Turing Way</a>
+    </imgcredit>
 </section>
 
-<section data-transition="None">
-    <h2>Brainhacks, Hackathons, and Traintracks</h2>
-
-    <ul style="font-size:35px">
-        <li>
-            Especially ECRs are extremely open towards new tools and motivated
-            to improve their science (<a href="https://sci-hub.se/10.1016/j.neuron.2018.11.030" target="_blank">Poldrack, 2019</a>)
-        </li>
-        <li>
-            Brainhack: Interdisciplinary conference format with educational
-            sessions & components from hackathons & unconferences
-        <a href="https://academic.oup.com/gigascience/article/5/1/s13742-016-0121-x/2720978" target="_blank">
-        (Craddock et al., 2016)</a>
-        </li>
-        <li>
-            Examples:
-             <a href="https://ohbm.github.io/hackathon2020/" target="_blank">OHBM Brainhack</a>,
-            <a href="https://brainhack.org/global2020/" target="_blank">Brainhack Global</a>,
-            <a href="https://neurohackademy.org/" target="_blank">Neurohackademy</a>,
-            <a href="https://www.apa.org/science/about/psa/2020/03/hackathon" target="_blank">SIPS hackathons</a>,
-            <a href="https://the-turing-way.netlify.app/welcome" target="_blank">Turing Way bookdashes</a></li>
-    </ul>
-</section>
-
-
-  <section>
-      <h2>Everyone should be able to learn</h2>
-      <table style="font-size:35px">
-    <tr>
-      <td>
-          The DataLad Handbook: Collaboratively written, user-focused and workflow-oriented tutorial-like
-          addition to software documentation
-         <a href="http://handbook.datalad.org" target="_blank">(handbook.datalad.org)</a>
-      </td>
-      <td>
-        <img src="pics/logo.svg" height="250">
-      </td>
-    </tr>
-  </table>
-
-    <table style="font-size:35px">
-        <tr>
-            <td><img src="pics/artwork/src/enter.svg" height="100"></a></td>
-            <td>
-              <ul>
-                <li>High-level function/command overviews, <br>
-                    Installation, Configuration, Cheatsheet</li>
-              </ul>
-            </td>
-        </tr>
-        <tr>
-            <td><img src="pics/artwork/src/basics.svg" height="100"></td>
-            <td>
-              <ul>
-                <li>Narrative-based code-along course</li>
-                <li>Independent on background/skill level, <br>
-                    no technical/computing knowledge required</li>
-              </ul>
-            </td>
-       </tr>
-        <tr>
-            <td><img src="pics/artwork/src/usecases.svg" height="100"></td>
-            <td>
-              <ul>
-                <li>Step-by-step solutions to common <br>
-                    data management problems, like<br />how to
-                    make a reproducible paper</li>
-              </ul>
-            </td>
-        </tr>
-    </table>
-
-  </section>
-
-</section>
-
-<!-- Summary -->
 
     <section>
+        <h2>How it works: Workflow management</h2>
+        Makefiles!
+                   <p class="fragment fade-in"  data-fragment-index="2" style="font-size:25px; z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:50px;margin-bottom:-30px;margin-left:700px">
+                        The final result: A manuscript PDF
+                        </p>
+                        <p class="fragment fade-in" data-fragment-index="3" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:170px;margin-bottom:-60px;margin-left:800px">
+                         Its ingredients:
+                         Manuscript sources and results.
+                         Only render the manuscript when those exist.
+                        </p>
+        <p class="fragment fade-in" data-fragment-index="4" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:540px;margin-bottom:-60px;margin-left:800px">
+                         How to generate results and figures
+                        </p>
+        <p class="fragment fade-in" data-fragment-index="4" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:740px;margin-bottom:-60px;margin-left:750px">
+                         Clean-up routine
+                        </p>
+    <p style="z-index: -1">
+<pre class="fragment fade-in" data-fragment-index="1"><code class="make" style="max-height:none" data-line-numbers="5, 9, 16, 25, 27"># use `chronic` to make output look neater, if available
+CHRONIC=$(shell which chronic || echo '' )
+PYTHON=python
+
+all: main.pdf
+
+# important to process stats and figures first, such that
+# up-to-date versions are compiled into the manuscript
+main.pdf: main.tex results_def.tex references.bib
+	@echo "# Render figures"
+	$(MAKE) -C img
+	@echo "# Render manuscript"
+	@$(CHRONIC) latexmk -pdf -g $<
+
+# the stats-script outputs all scores and figures
+results_def.tex: code/mk_figuresnstats.py
+	@test -z "$$VIRTUAL_ENV" && \
+		echo "ERROR: must be executed in a virtual env (set VIRTUAL_ENV to fake one)" && \
+		exit 1 || true
+	@echo "# Ensure REMODNAV installation"
+	@python -m pip install pandas==1.0.5 seaborn==0.10.1 scikit-learn==0.23.0 datalad
+	@datalad get -n remodnav
+	@$(CHRONIC) pip install -e remodnav
+	@rm -f $@
+	@REMODNAV_RESULTS=$@ $(PYTHON) code/mk_figuresnstats.py -s -f -r -m
+
+clean:
+	rm -f main.bbl main.aux main.blg main.log main.out main.pdf main.tdo \
+		main.fls main.fdb_latexmk texput.log \
+		results_def.tex
+	$(MAKE) -C img clean
+
+virtualenv:
+
+.PHONY: clean
+
+</code></pre>
+    </section>
+    </section>
+
+
+    <section>
+    <section data-transition="None">
+        <h2>Why: Software Management?</h2>
+    "Works on my machine"
+    <img src="pics/WOMM.jpg">
+    <imgcredit><a href="https://derickbailey.com/2017/02/08/digging-into-the-works-on-my-machine-problem/" target="_blank">
+        derickbailey.com
+    </a> </imgcredit>
+</section>
+
+
+<section data-transition="None">
+    <h2>Why: Software Management?</h2>
+    "This used to work on my machine..."
+    <img src="pics/WOMM2.jpg">
+        <imgcredit>Based on <a href="https://derickbailey.com/2017/02/08/digging-into-the-works-on-my-machine-problem/" target="_blank">
+        derickbailey.com
+    </a> </imgcredit>
+</section>
+
+    <section>
+        <h2>How it works: Software management</h2>
+        <p class="fragment fade-in" data-fragment-index="4" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:340px;margin-bottom:-60px;margin-left:200px">
+                         Set up software environment prior to computing
+                        </p>
+
+    <p style="z-index: -1">
+<pre class="fragment fade-in" data-fragment-index="1"><code class="make" style="max-height:none" data-line-numbers="17-23"># use `chronic` to make output look neater, if available
+CHRONIC=$(shell which chronic || echo '' )
+PYTHON=python
+
+all: main.pdf
+
+# important to process stats and figures first, such that
+# up-to-date versions are compiled into the manuscript
+main.pdf: main.tex results_def.tex references.bib
+	@echo "# Render figures"
+	$(MAKE) -C img
+	@echo "# Render manuscript"
+	@$(CHRONIC) latexmk -pdf -g $<
+
+# the stats-script outputs all scores and figures
+results_def.tex: code/mk_figuresnstats.py
+	@test -z "$$VIRTUAL_ENV" && \
+		echo "ERROR: must be executed in a virtual env (set VIRTUAL_ENV to fake one)" && \
+		exit 1 || true
+	@echo "# Ensure REMODNAV installation"
+	@python -m pip install pandas==1.0.5 seaborn==0.10.1 scikit-learn==0.23.0 datalad
+	@datalad get -n remodnav
+	@$(CHRONIC) pip install -e remodnav
+	@rm -f $@
+	@REMODNAV_RESULTS=$@ $(PYTHON) code/mk_figuresnstats.py -s -f -r -m
+
+clean:
+	rm -f main.bbl main.aux main.blg main.log main.out main.pdf main.tdo \
+		main.fls main.fdb_latexmk texput.log \
+		results_def.tex
+	$(MAKE) -C img clean
+
+virtualenv:
+
+.PHONY: clean
+
+</code></pre>
+    </section>
+</section>
 
 <section>
-    <h2>So where are we?</h2>
-    <table>
-        <tr>
-            <td>
-                <ul style="font-size:35px">
-                    <li class="fragment fade-in">
-                        We can do it
-                    </li>
-                    <li class="fragment fade-in">
-                        It is worth it
-                    </li>
-                    <li class="fragment fade-in">
-                        Go to a Hackathon, <br>
-                        learn, and help <br>
-                        other people learn!
-                    </li>
-                </ul>
-            </td>
-            <td>
-                <img src="pics/ReproducibleJourney.png" height="600">
-            </td>
-        </tr>
-    </table>
+<section>
+    <h2>Why: Dynamic document generation?</h2>
+    <img src="pics/copypaste.jpg" height="500px">
+    <imgcredit><a href="https://memegenerator.net/instance/63989912/days-since-0-days-since-copy-paste-error" target="_blank">
+                    Memegenerator</a>
+                  </imgcredit>
+</section>
+
+
+
+<section data-transition="None">
+        <h2>How it works: Dynamic document generation</h2>
+
+        <p style="font-size:30px">Let's take a look into how results and figures are saved by the script:</p>
+       <p style="z-index: -1">
+<pre class="fragment fade-in" data-fragment-index="1"><code class="python" data-line-numbers="" style="max-height:none">def mk_confusion_figures(fig, stat):
+    """
+    small helper function to save all confusion matrices
+    """
+    max_mclf = 0
+    for pair in itertools.combinations(['MN', 'RA', 'AL'], 2):
+        plt.figure(
+            # fake size to get the font size down in relation
+            figsize=(14, 3),
+            dpi=120,
+            frameon=False)
+        cur_max_mclf = confusion(pair[0],
+                                 pair[1],
+                                 fig,
+                                 stat)
+        plt.savefig(
+            op.join('img', 'confusion_{}_{}.svg'.format(*pair)),
+            transparent=True,
+            bbox_inches="tight",
+            metadata={'Date': None})
+        plt.close()
+        if cur_max_mclf > max_mclf:
+            max_mclf = cur_max_mclf
+    if stat:
+        rsout('\\newcommand{\\maxmclf}{%s}'
+              % ('%.1f' % max_mclf))
+</code></pre>
+    </section>
+
+
+    <section data-transition="None">
+        <h2>How it works: Dynamic document generation</h2>
+
+        <p style="font-size:30px">Let's take a look into how results and figures are saved by the script:</p>
+                <p class="fragment fade-in" data-fragment-index="4" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:340px;margin-bottom:-60px;margin-left:200px">
+                        Figures are saved into a relative project path
+                        </p>
+    <p style="z-index: -1">
+<pre><code class="python" style="max-height:none" data-line-numbers="16-20">def mk_confusion_figures(fig, stat):
+    """
+    small helper function to save all confusion matrices
+    """
+    max_mclf = 0
+    for pair in itertools.combinations(['MN', 'RA', 'AL'], 2):
+        plt.figure(
+            # fake size to get the font size down in relation
+            figsize=(14, 3),
+            dpi=120,
+            frameon=False)
+        cur_max_mclf = confusion(pair[0],
+                                 pair[1],
+                                 fig,
+                                 stat)
+        plt.savefig(
+            op.join('img', 'confusion_{}_{}.svg'.format(*pair)),
+            transparent=True,
+            bbox_inches="tight",
+            metadata={'Date': None})
+        plt.close()
+        if cur_max_mclf > max_mclf:
+            max_mclf = cur_max_mclf
+    if stat:
+        rsout('\\newcommand{\\maxmclf}{%s}'
+              % ('%.1f' % max_mclf))
+</code></pre>
+    </section>
+
+    <section data-transition="None">
+        <h2>How it works: Dynamic document generation</h2>
+
+                <p style="font-size:30px">The LaTeX sources can directly embed this figure:</p>
+                <p class="fragment fade-in" data-fragment-index="4" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:120px;margin-bottom:-60px;margin-left:350px">
+                        Figures are embedded into the manuscript sources
+                        </p>
+    <p style="z-index: -1">
+<pre><code class="latex" style="max-height:none" data-line-numbers="2-4">\begin{figure*}
+  \includegraphics[trim=0 0 0 0,clip,width=1\textwidth]{img/confusion_MN_RA.pdf} \\
+  \includegraphics[trim=0 0 0 6.6mm,clip,width=1\textwidth]{img/confusion_MN_AL.pdf} \\
+  \includegraphics[trim=0 0 0 6.6mm,clip,width=1\textwidth]{img/confusion_RA_AL.pdf}
+  \caption{Confusion patterns for pairwise eye movement classification
+    comparison of both human raters \citep[MN and RA; ][]{Andersson2017} and the
+    \remodnav\ algorithm (AL) for gaze recordings from stimulation with static
+    images (left column), moving dots (middle column), and video clips (right
+    column).  All matrices present gaze sample based Jaccard indices \citep[JI;
+    ][]{jaccard1901etude}. Consequently, the diagonals depict the fraction of
+    time points labeled congruently by both raters in relation to the number of
+    timepoints assigned to a particular event category by any rater.}
+  % Give a unique label
+  \label{fig:conf}
+\end{figure*}
+
+</code></pre>
+    </section>
+
+
+    <section data-transition="None">
+        <h2>How it works: Dynamic document generation</h2>
+        <img src="pics/fig_example.png">
+    </section>
+
+
+    <section data-transition="None">
+        <h2>How it works: Dynamic document generation</h2>
+
+        <p style="font-size:30px">What about tables?</p>
+                <p class="fragment fade-in" data-fragment-index="4" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:550px;margin-bottom:-60px;margin-left:200px">
+                        We print them under a unique label
+                        as a LaTeX \newcommand variable
+                        </p>
+    <p style="z-index: -1">
+<pre><code class="python" style="max-height:none" data-line-numbers="24-26">def mk_confusion_figures(fig, stat):
+    """
+    small helper function to save all confusion matrices
+    """
+    max_mclf = 0
+    for pair in itertools.combinations(['MN', 'RA', 'AL'], 2):
+        plt.figure(
+            # fake size to get the font size down in relation
+            figsize=(14, 3),
+            dpi=120,
+            frameon=False)
+        cur_max_mclf = confusion(pair[0],
+                                 pair[1],
+                                 fig,
+                                 stat)
+        plt.savefig(
+            op.join('img', 'confusion_{}_{}.svg'.format(*pair)),
+            transparent=True,
+            bbox_inches="tight",
+            metadata={'Date': None})
+        plt.close()
+        if cur_max_mclf > max_mclf:
+            max_mclf = cur_max_mclf
+    if stat:
+        rsout('\\newcommand{\\maxmclf}{%s}'
+              % ('%.1f' % max_mclf))
+</code></pre>
+        <p class="fragment fade-in" style="font-size:30px">For example, <code>\newcommand{\maxmclf}{10.8}</code></p>
+    </section>
+
+
+    <section data-transition="None">
+        <h2>How it works: Dynamic document generation</h2>
+
+                <p style="font-size:30px">Output is automatically written to <code>results_def.tex</code>...</p>
+                <p class="fragment fade-in" data-fragment-index="4" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:120px;margin-bottom:-60px;margin-left:350px">
+                        The value 6.1 will be in a LaTeX variable \imgMNRAMCLF
+                        </p>
+    <p style="z-index: -1">
+<pre><code class="latex" style="max-height:none" data-line-numbers="2">$ cat results_def.tex
+\newcommand{\imgMNRAMCLF}{6.1}
+\newcommand{\imgMNRAMclfWOP}{3.0}
+\newcommand{\imgMNRAFIXref}{70}
+\newcommand{\imgMNRASACref}{9}
+\newcommand{\imgMNRAPSOref}{21}
+\newcommand{\imgMNRASPref}{0}
+\newcommand{\imgMNRAFIXcod}{13}
+\newcommand{\imgMNRASACcod}{15}
+\newcommand{\imgMNRAPSOcod}{20}
+\newcommand{\imgMNRASPcod}{53}
+[...]
+</code></pre>
+    </section>
+
+
+    <section data-transition="None">
+        <h2>How it works: Dynamic document generation</h2>
+                <p style="font-size:30px">...and can be used in the LaTeX sources:</p>
+                <p class="fragment fade-in" data-fragment-index="3" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:80px;margin-bottom:-60px;margin-left:350px">
+                        Make the variables available to the LaTeX sources
+                        </p>
+                <p class="fragment fade-in" data-fragment-index="4" style="z-index: 100;position: fixed;background-color:#ede6d5;font-size:35px;box-shadow: 10px 10px 8px #888888;margin-top:480px;margin-bottom:-60px;margin-left:350px">
+                        Use them to embed the results in a table
+                        </p>
+    <p style="z-index: -1">
+<pre><code class="latex" style="max-height:none" data-line-numbers="2, 17">\begin{document}
+\input{results_def.tex}
+\onecolumn
+\title{REMoDNaV: Robust Eye-Movement Classification for Dynamic Stimulation} %\\ (remodnav)
+
+[...]
+
+\begin{table}[tbp]
+  \caption{Cohen's Kappa reliability between human coders (MN, RA), and \remodnav\ (AL)
+  with each of the human coders.}
+  \label{tab:kappa}
+  \begin{tabular*}{0.5\textwidth}{c @{\extracolsep{\fill}}llll}
+    \textbf {Fixations}                   &                  &                   &                    \\
+    \hline\noalign{\smallskip}
+    Comparison                            & Images           & Dots              & Videos             \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    MN versus RA                          & \kappaRAMNimgFix & \kappaRAMNdotsFix & \kappaRAMNvideoFix \\
+    AL versus RA                          & \kappaALRAimgFix & \kappaALRAdotsFix & \kappaALRAvideoFix \\
+    AL versus MN                          & \kappaALMNimgFix & \kappaALMNdotsFix & \kappaALMNvideoFix \\
+    \noalign{\smallskip}\hline
+  \end{tabular*}
+\end{table}
+    </code></pre>
+    </section>
+
+    <section data-transition="None">
+        <h2>How it works: Dynamic document generation</h2>
+        <img src="pics/table_example.png">
+    </section>
+
+</section>
+
+
+
+    <section>
+        <h2>Add a few basic RDM strategies</h2>
+        <ul>
+            <li class="fragment fade-in" data-fragment-index="1">Create an intuitive structure, ideally comply to standards</li>
+            <pre class="fragment fade-in" data-fragment-index="1"><code class="fragment fade-in" data-fragment-index="1">├── code/                        # scripts
+├── data/                        # datasets
+├── img/                         # computed figures
+├── main.tex                     # manuscript sources
+├── Makefile                     # documentation for machines
+├── README.md                    # documentation for humans
+├── references.bib
+├── remodnav/                    # software
+└── results_def.tex              # numerical results
+            </code></pre>
+            <li class="fragment fade-in" data-fragment-index="2">Ensure completeness and portability:</li>
+            <pre class="fragment fade-in-then-semi-out" data-fragment-index="3"><code class="fragment fade-in-then-semi-out" data-fragment-index="3"># ANTIPATTERN
+# read important configuration
+path = '/nfs/e2/somewhere/outside/theproject/veryimportant.info'</code></pre>
+            <pre class="fragment fade-in" data-fragment-index="4"><code class="fragment fade-in" data-fragment-index="4"># include important configuration, read from a relative path
+path = 'code/veryimportant.info'</code></pre>
+        </ul>
+    </section>
+
+<section>
+<section data-transition="None">
+    <h2>Why would you want to work this way?</h2>
+    <dl style="font-size:35px">
+        <br>
+        <br>
+            <table>
+                <tr>
+                    <td>Data changes (for real) <br>
+                        <small>(errors are fixed, data is extended,<br>
+                            naming standards change, ...)</small></td>
+                    <td>
+                    <b>Example</b>: <br>I found an error in one of the public datasets -<br>
+                       just before submission</td>
+                </tr>
+            </table>
+        <img src="pics/datahistory.png" >
+    </dl>
+            <img class="fragment fade-in" src="pics/updatedata.png" height="300px">
+</section>
+
+  <section>
+  <h2>Why would you want to work this way?</h2>
+                    <img class="fragment fade-in" src="pics/efficiency.png" height="500px">
+                  <imgcredit>CC-BY Scriberia and <a href="https://the-turing-way.netlify.app/reproducible-research/rdm.html" target="_blank">
+                    The Turing Way</a>
+                  </imgcredit>
+          <ul class="fragment fade-in">
+              <li>Save time</li>
+              <li>Have a framework for collaboration</li>
+              <li>Gain confidence in the validity of your results</li>
+              <li>Make a more convincing case with your research</li>
+              <li>Make your research more accessible </li>
+              <li>Increase your work's reusability</li>
+          </ul>
+  </section>
+
+  <section data-background-image="pics/ohno.png" data-background-opacity="20%">
+      <h2>"Oh god, but I don't know any of the tools..."</h2>
+      <ul>
+          <dd class="fragment fade-in-then-semi-out">
+              Use other tools! (RMarkdown/Bookdown, Snakemake,
+              Bash scripts for orchestration, Guix, Software containers, ...).
+              What matters is the result, not how you get there</dd>
+          <dd class="fragment fade-in-then-semi-out">
+              There are even complete frameworks, such as WORCS
+              (<a href="https://content.iospress.com/articles/data-science/ds210031" target="_blank">
+              Van Lissa et al., 2020)</a> or <a href="https://doi.org/10.5964/qcmb.3763" target="_blank">
+              Peikert & Brandmaier, 2021 </a>
+          </dd>
+          <dd class="fragment fade-in-then-semi-out">
+              There are tutorials and documentation everywhere, e.g., for
+              <a href="https://github.com/datalad-handbook/repro-paper-sketch/" target="_blank">
+              our paper</a>, using <a href="https://the-turing-way.netlify.app/reproducible-research/make/make-casestudy.html" target="_blank">
+              Make</a>, in <a href="https://osf.io/pxfjg/download" target="_blank">R</a>, etc.
+          </dd>
+      </ul>
+
+  </section>
+</section>
+
 
 
 </section>
 
+<section>
 <section>
     <h2>Acknowledgements</h2>
   <table style="font-size:35px">
   <tr style="vertical-align:middle;margin-bottom:-20px">
     <td style="vertical-align:middle">
       <dl>
-        <dt>Advisors, Mentors & Communities</dt>
+        <dt>Mentors + Co-authors</dt>
         <dd style="margin-left:5px!important">
           <ul style="margin-left:5px!important">
-              <li>Institute for Neuroscience <br>
-                  and Medicine (INM-7)</li>
+              <li>Michael Hanke & Asim H. Dar</li>
               <li>Psychoinformatics Lab</li>
-              <li>The Turing Way community</li>
-              <li>OHBM Open Science SIG</li>
-              <li>Open Source software developers and research software engineers</li>
           </ul>
         </dd>
       </dl>
-
-        <dt>DataLad</dt>
+      <dl>
+        <dt>Illustrations and Tutorials</dt>
         <dd style="margin-left:5px!important">
           <ul style="margin-left:5px!important">
-              <li>Michael Hanke, Yaroslav Halchenko, <br>
-                  Joey Hess (git-annex), Kyle Meyer, <br>
-                  Benjamin Poldrack, + ...</li>
+              <li>The Turing Way + Scriberia</li>
           </ul>
         </dd>
+      </dl>
+      <dl>
+        <dt>Creators and Maintainers <br>
+            of our ecosystem of <br>
+            open source tools</dt>
       </dl>
     </td>
     <td style="vertical-align:middle">
-  <img style="height:350px;margin-right:50px" data-src="pics/inm7.JPG" />
+  <img style="height:300px;margin-right:50px" data-src="pics/coauthors.png" />
   <img style="height:350px;margin-right:50px" data-src="pics/lab.png" />
   </td>
   </tr>
@@ -1172,7 +1044,9 @@ action summary:
       { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
       { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
       { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-      { src: 'reveal.js/plugin/notes/notes.js', async: true }
+      { src: 'reveal.js/plugin/notes/notes.js', async: true },
+      { src: 'plugin/wordcloud/reveal-wordcloud.js',
+        condition: function() { return !!document.querySelector( '[wordcloud]' ); } }
     ]
   });
 </script>
