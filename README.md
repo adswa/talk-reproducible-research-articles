@@ -1,8 +1,9 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4285927.svg)](https://doi.org/10.5281/zenodo.4285927)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5508797.svg)](https://doi.org/10.5281/zenodo.5508797)
 
-# reproducibility management in neuroscience 🧠💻  Specific issues - and solutions
+# Data + Code + Software = PDF: 
+## How to write a reproducible research article
 
-Raw sources for a talk on computational reproducibility I gave at the DGPA/DGPs-Symposium "Computational Reproducibility", Nov. 23rd 2020.
+Raw sources for a talk on how to write a reproducible paper I gave at the NL-RSE Meetup on  "Reproducible Research Environments", Sep. 15th 2021.
 
 This repository contains the source code for the slides in HTML as ``index.html``.
-A PDF version of the slides can be found at [zenodo.org/record/4285927#.X7uy8yUo8UE](https://zenodo.org/record/4285927#.X7uy8yUo8UE).
+A PDF version of the slides can be found at [https://doi.org/10.5281/zenodo.5508797](https://doi.org/10.5281/zenodo.5508797).
